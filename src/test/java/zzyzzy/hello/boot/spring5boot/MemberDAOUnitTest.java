@@ -12,7 +12,10 @@ import zzyzzy.hello.boot.spring5boot.dao.MemberDAO;
 import zzyzzy.hello.boot.spring5boot.dao.MemberDAOImpl;
 import zzyzzy.hello.boot.spring5boot.model.Member;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -30,6 +33,15 @@ public class MemberDAOUnitTest {
         int result = mdao.insertMember(m);
         System.out.println(result);
         assertEquals(result, 1);
+    }
+
+    @Test
+    @DisplayName("MemberMapper select Test")
+    void selectMember() {
+        List<Member> results = mdao.selectMember();
+
+        System.out.println(results);
+        assertNotNull(results);
     }
 
 }
