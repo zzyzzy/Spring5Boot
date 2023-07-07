@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import zzyzzy.hello.boot.spring5boot.model.Member;
+import zzyzzy.hello.boot.spring5boot.model.Zipcode;
 import zzyzzy.hello.boot.spring5boot.mybatis.MemberMapper;
 
 import java.util.List;
@@ -18,9 +19,6 @@ public class MemberDAOImpl implements MemberDAO {
     @Autowired
     final MemberMapper memberMapper;
 
-    @Autowired
-    private SqlSession sqlSession;
-
     @Override
     public int insertMember(Member m) {
 
@@ -32,5 +30,11 @@ public class MemberDAOImpl implements MemberDAO {
     @Override
     public List<Member> selectMember() {
         return memberMapper.selectMember();
+    }
+
+    @Override
+    public List<Zipcode> selectzip(String dong) {
+
+        return memberMapper.findZipcode(dong);
     }
 }
