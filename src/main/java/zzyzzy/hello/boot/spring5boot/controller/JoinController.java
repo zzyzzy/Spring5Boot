@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import zzyzzy.hello.boot.spring5boot.model.Checkme;
 import zzyzzy.hello.boot.spring5boot.model.Member;
 import zzyzzy.hello.boot.spring5boot.service.MemberService;
@@ -99,5 +96,16 @@ public class JoinController {
 
     }
 
+    // 아이디 중복검사
+    // /join/checkuid?uid=아이디
+    // /join/checkuid/아이디
+    @GetMapping("/checkuid/{uid}")
+    @ResponseBody
+    public void checkuid(@PathVariable String uid, HttpServletResponse res) throws IOException {
+        res.setContentType("application/json; charset=utf-8");
+
+        res.getWriter().print( msrv.checkuid(uid) );
+
+    }
 
 }
