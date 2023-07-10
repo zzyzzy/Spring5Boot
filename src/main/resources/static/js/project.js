@@ -30,10 +30,12 @@ checkbtn2?.addEventListener('click', () => {
 cancelbtn2?.addEventListener('click', () => {
     location.href = '/';
 });
+
 // joinme
 let zipbtn = document.querySelector("#findzipbtn");
 let dong = document.querySelector("#dong");
 let addrlist = document.querySelector("#addrlist");
+let sendzip = document.querySelector("#sendzip");
 
 const showzipaddr = (jsons) => {
     jsons = JSON.parse(jsons); // 문자열을 json객체로 변환
@@ -45,6 +47,7 @@ const showzipaddr = (jsons) => {
     });
     addrlist.innerHTML = addr;
 };
+
 zipbtn?.addEventListener('click', () => {
     if (dong.value === '') {
         alert('동이름을 입력하세요!!');
@@ -55,7 +58,22 @@ zipbtn?.addEventListener('click', () => {
         .then(text => showzipaddr(text));
 });
 
+sendzip?.addEventListener('click', () => {
+    let frm = document.forms.joinfrm;
+    let addr = addrlist.value;   // 선택한 주소 항목
+    if (addr !== '') {
+        // 123-456 서울 관악구 신림동
+        let zip = addr.split(' ')[0];  // 우편번호 추출
+        let addrs = addr.split(' ');
+        let vaddr = `${addrs[1]} ${addrs[2]} ${addrs[3]}`; // 주소추출
 
+        frm.zip1.value = zip.split('-')[0];
+        frm.zip2.value = zip.split('-')[1];
+        frm.addr1.value = vaddr;
+    } else {
+        alert('주소를 선택하세요!!');
+    }
+});
 
 
 
