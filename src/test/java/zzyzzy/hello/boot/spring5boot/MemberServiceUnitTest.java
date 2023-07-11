@@ -27,7 +27,7 @@ public class MemberServiceUnitTest {
     @DisplayName("MemberService save Test")
     void saveMember() {
         Member m = new Member(null,"","","",
-            "","","","","",null);
+            "","","","","","",null);
 
         boolean result = msrv.saveMember(m);
         System.out.println(result);
@@ -41,6 +41,19 @@ public class MemberServiceUnitTest {
 
         System.out.println(results);
         assertNotNull(results);
+    }
+
+    @Test
+    @DisplayName("MemberService readOneMember Test")
+    void readOneMember() {
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+
+        Member result = msrv.readOneMember(m);
+
+        System.out.println(result);
+        assertNotNull(result);
     }
 
 }
