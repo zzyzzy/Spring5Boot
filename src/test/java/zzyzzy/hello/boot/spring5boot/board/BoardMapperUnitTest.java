@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.transaction.annotation.Transactional;
 import zzyzzy.hello.boot.spring5boot.model.Board;
 import zzyzzy.hello.boot.spring5boot.mybatis.BoardMapper;
 
@@ -41,6 +42,19 @@ public class BoardMapperUnitTest {
 
         assertNotNull(result);
     }
+
+    @Test
+    @DisplayName("boardMapper insert Test")
+    @Transactional
+    void insertBoard() {
+        Board b = new Board();
+        b.setUserid("abc123"); b.setTitle("테스트");
+        b.setContents("테스트"); b.setIpaddr("127.0.0.1");
+
+        int result = boardMapper.insertBoard(b);
+        assertEquals(result, 1);
+    }
+
 
 
 }
