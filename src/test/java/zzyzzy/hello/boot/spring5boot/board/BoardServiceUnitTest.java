@@ -7,13 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Import;
 import zzyzzy.hello.boot.spring5boot.dao.BoardDAOImpl;
-import zzyzzy.hello.boot.spring5boot.dao.MemberDAOImpl;
 import zzyzzy.hello.boot.spring5boot.model.Board;
-import zzyzzy.hello.boot.spring5boot.model.Member;
 import zzyzzy.hello.boot.spring5boot.service.BoardService;
 import zzyzzy.hello.boot.spring5boot.service.BoardServiceImpl;
-import zzyzzy.hello.boot.spring5boot.service.MemberService;
-import zzyzzy.hello.boot.spring5boot.service.MemberServiceImpl;
 
 import java.util.List;
 
@@ -29,7 +25,9 @@ public class BoardServiceUnitTest {
     @Test
     @DisplayName("BoardService read Test")
     void readBoard() {
-        List<Board> results = bsrv.readBoard();
+        int cpg = 1;
+
+        List<Board> results = bsrv.readBoard(cpg);
 
         //System.out.println(results);
         assertNotNull(results);
