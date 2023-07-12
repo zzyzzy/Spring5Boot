@@ -6,9 +6,7 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import zzyzzy.hello.boot.spring5boot.model.Board;
-import zzyzzy.hello.boot.spring5boot.model.Member;
 import zzyzzy.hello.boot.spring5boot.mybatis.BoardMapper;
-import zzyzzy.hello.boot.spring5boot.mybatis.MemberMapper;
 
 import java.util.List;
 
@@ -25,7 +23,10 @@ public class BoardMapperUnitTest {
     @Test
     @DisplayName("boardMapper select Test")
     void selectBoard() {
-        List<Board> results = boardMapper.selectBoard();
+        int cpg = 1;
+        int stnum = (cpg - 1) * 25;
+
+        List<Board> results = boardMapper.selectBoard(stnum);
 
         System.out.println(results);
         assertNotNull(results);
