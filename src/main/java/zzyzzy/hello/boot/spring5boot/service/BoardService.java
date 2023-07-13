@@ -12,4 +12,15 @@ public interface BoardService {
 
     Board readOneBoard(String bno);
 
+    int countBoard();
 }
+
+
+
+
+
+
+
+
+
+

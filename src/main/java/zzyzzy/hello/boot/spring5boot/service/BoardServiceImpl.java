@@ -35,4 +35,10 @@ public class BoardServiceImpl implements BoardService {
         return bdao.selectOneBoard(bno);
     }
 
+    @Override
+    public int countBoard() {
+
+        return bdao.selectCountBoard();
+    }
+
 }
