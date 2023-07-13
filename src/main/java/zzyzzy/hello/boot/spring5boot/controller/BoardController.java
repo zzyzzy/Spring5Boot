@@ -31,6 +31,7 @@ public class BoardController {
 
         m.addAttribute("bds", bsrv.readBoard(cpg));
         m.addAttribute("cpg", cpg);
+        m.addAttribute("cntpg", bsrv.countBoard());
 
         return "board/list";
     }
@@ -61,6 +62,5 @@ public class BoardController {
 
         return returnPage;
     }
-
 
 }
