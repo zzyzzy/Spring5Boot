@@ -11,7 +11,9 @@ import zzyzzy.hello.boot.spring5boot.dao.BoardDAO;
 import zzyzzy.hello.boot.spring5boot.dao.BoardDAOImpl;
 import zzyzzy.hello.boot.spring5boot.model.Board;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -63,6 +65,19 @@ public class BoardDAOUnitTest {
         int result = bdao.selectCountBoard();
 
         assertNotNull(result);
+    }
+
+    @Test
+    @DisplayName("boardDAO findBoard Test")
+    void findBoard() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("findtype", "titcont");
+        params.put("findkey", "의료");
+        params.put("stnum", 0);
+
+        List<Board> results = bdao.selectFindBoard(params);
+
+        assertNotNull(results);
     }
 
 }
