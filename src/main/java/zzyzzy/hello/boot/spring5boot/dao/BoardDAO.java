@@ -12,4 +12,12 @@ public interface BoardDAO {
 
     Board selectOneBoard(String bno);
 
+    int selectCountBoard();
 }
+
+
+
+
+
+
+
