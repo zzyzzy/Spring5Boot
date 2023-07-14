@@ -6,7 +6,7 @@
 <th:block layout:fragment="content">
     <div id="main"
         th:with="pglink=${(#strings.isEmpty(fkey)) ?
-            '/board/list/' : '/board/find/'+ftype+'/'+fkey+'/'}">
+            '/board/list/' : '/board/find/' + ftype + '/' + fkey + '/'}">
         <div class="mt-5">
             <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판</i>
             <hr>
@@ -90,7 +90,7 @@
                         <li th:class="${(cpg - 1 gt 0) ? 'page-item' : 'page-item disabled'}">
                             <a th:href="|${pglink}${cpg - 1}|" class="page-link">이전</a></li>
 
-                        <th:block th:each="i : ${#numbers.sequence(stpg, stpg+9)}">
+                        <th:block th:each="i : ${#numbers.sequence(stpg, stpg + 9)}">
                             <!-- 출력페이지i가 총페이지수cntpg보다 작거나 같으면 출력 -->
                             <th:block th:if="${i le cntpg}">
                                 <li th:class="${(i ne cpg) ? 'page-item' : 'page-item active'}">
