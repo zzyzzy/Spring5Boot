@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.transaction.annotation.Transactional;
 import zzyzzy.hello.boot.spring5boot.model.Board;
 import zzyzzy.hello.boot.spring5boot.model.Pds;
+import zzyzzy.hello.boot.spring5boot.model.PdsAttach;
 import zzyzzy.hello.boot.spring5boot.mybatis.PdsMapper;
 
 import java.util.HashMap;
@@ -38,6 +39,14 @@ public class PdsMapperUnitTest {
         assertNotNull(result);
     }
 
+    @Test
+    @DisplayName("PdsMapper selectOnePA Test")
+    void selectOnePA() {
+        String pno = "13";
+
+        PdsAttach result = pdsMapper.selectOnePdsAttach(pno);
+        assertNotNull(result);
+    }
 
 }
 
