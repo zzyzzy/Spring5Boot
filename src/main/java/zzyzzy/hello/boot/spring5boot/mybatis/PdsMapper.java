@@ -3,6 +3,7 @@ package zzyzzy.hello.boot.spring5boot.mybatis;
 import org.apache.ibatis.annotations.Mapper;
 import zzyzzy.hello.boot.spring5boot.model.Pds;
 import zzyzzy.hello.boot.spring5boot.model.PdsAttach;
+import zzyzzy.hello.boot.spring5boot.model.PdsComment;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,10 @@ public interface PdsMapper {
     int selectCountPds();
 
     PdsAttach selectOnePdsAttach(String pno);
+
+    int insertPdsComment(PdsComment pc);
+
+    List<PdsComment> selectPdsComment(String pno);
 
     /*int updateViewPds(String bno);
 
