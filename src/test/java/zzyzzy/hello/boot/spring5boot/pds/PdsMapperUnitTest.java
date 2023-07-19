@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import zzyzzy.hello.boot.spring5boot.model.Board;
 import zzyzzy.hello.boot.spring5boot.model.Pds;
 import zzyzzy.hello.boot.spring5boot.model.PdsAttach;
+import zzyzzy.hello.boot.spring5boot.model.PdsComment;
 import zzyzzy.hello.boot.spring5boot.mybatis.PdsMapper;
 
 import java.util.HashMap;
@@ -45,6 +46,29 @@ public class PdsMapperUnitTest {
         String pno = "13";
 
         PdsAttach result = pdsMapper.selectOnePdsAttach(pno);
+        assertNotNull(result);
+    }
+
+    @Test
+    @DisplayName("PdsMapper selectPC Test")
+    void selectPdsComments() {
+        String pno = "13";
+
+        List<PdsComment> results = pdsMapper.selectPdsComment(pno);
+        assertNotNull(results);
+    }
+
+
+    @Test
+    @DisplayName("PdsMapper newcomment Test")
+    //@Transactional
+    void newcomment() {
+        PdsComment pc = new PdsComment();
+        pc.setUserid("abc123"); pc.setComments("테스트");
+        pc.setPno("13");
+
+        int result = pdsMapper.insertPdsComment(pc);
+
         assertNotNull(result);
     }
 
