@@ -182,6 +182,24 @@ alter table galattach
     add constraint fkgno
         foreign key (gno) references gallery (gno);
 
+-- view
+create view gga
+as
+select * from gallery g join galattach ga using(gno);
+
+select * from gga;
+
+
+create view gga0
+as
+select gno, title, userid, substring(regdate, 1, 10) regdate,
+       thumbs, views, fname
+    from gallery g join galattach ga using(gno);
+
+
+select * from gga0;
+
+
 
 
 
