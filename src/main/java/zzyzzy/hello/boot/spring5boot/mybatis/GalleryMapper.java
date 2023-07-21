@@ -1,6 +1,8 @@
 package zzyzzy.hello.boot.spring5boot.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
+import zzyzzy.hello.boot.spring5boot.model.GalAttach;
+import zzyzzy.hello.boot.spring5boot.model.Gallery;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ public interface GalleryMapper {
     int selectCountGallery();
 
     GalAttach selectOneGalAttach(String gno);
+
+    int lastGalGno();
 
     /*int insertPdsComment(PdsComment pc);
 
